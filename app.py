@@ -57,6 +57,8 @@ def my_form_post():
 
 @app.route('/graph')
 def graph():
+    ti = 'AAPL'
+    plot = create_stock_plot(ti)
     script, div = components(plot)
     return render_template('graph2.html', script=script, div=div)
 
