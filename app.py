@@ -51,14 +51,14 @@ def my_form_post():
     processed_text = text.upper()
     return render_template('about.html')
 
-@app.route('/about')
+@app.route('/graph')
 def about():
     # Create the plot
-    plot = create_stock_plot(AAPL)
+    plot = create_stock_plot(ti)
 
     # Embed plot into HTML via Flask Render
     script, div = components(plot)
-    return render_template("about.html", script=script, div=div)
+    return render_template("graph.html", script=script, div=div)
 
 if __name__ == '__main__':
   app.run(port=33507)
