@@ -48,7 +48,7 @@ def index():
 
     #Embed plot into html vis Flask Render
     script, div = components(plot)
-    return render_template('test.html', script=script, div=div,
+    return render_template('index.html', script=script, div=div,
         ti=stock_ticker)
 
 @app.route('/about')
