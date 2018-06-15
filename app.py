@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 import quandl as q
 import pandas as pd
 from bokeh.models.widgets import TextInput #Select
-from bokeh.plotting import figure #, output_file, show
+from bokeh.plotting import figure, show #, output_file
 from bokeh.models import Band, ColumnDataSource, Range1d, Title
 from bokeh.embed import components
 #setting api key to access data from quandl
@@ -47,16 +47,18 @@ def index():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    text = request.form['stock-ticker']
-    ti = text.upper()
+    ti = request.form['stock-ticker']
+    #ti = text.upper()
     # Create the plot
     plot = create_stock_plot(ti)
     # Embed plot into HTML via Flask Render
     script, div = components(plot)
-    return render_template("index2.html", script=script, div=div)
+    return render_template("graph2.html", script=script, div=div)
 
-#@app.route('/about')
-#def about():
+@app.route('/graph')
+def graph():
+    script, div = components(plot)
+    return render_template('graph2.html', script=script, div=div)
 
 if __name__ == '__main__':
   app.run(port=33507)
