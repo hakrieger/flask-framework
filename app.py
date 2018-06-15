@@ -47,18 +47,16 @@ def index():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    ti = request.form['stock-ticker']
-    processed_text = text.upper()
-    return render_template('about.html')
-
-@app.route('/graph')
-def about():
+    text = request.form['stock-ticker']
+    ti = text.upper()
     # Create the plot
     plot = create_stock_plot(ti)
-
     # Embed plot into HTML via Flask Render
     script, div = components(plot)
     return render_template("graph.html", script=script, div=div)
+
+#@app.route('/about')
+#def about():
 
 if __name__ == '__main__':
   app.run(port=33507)
