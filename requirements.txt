@@ -6,3 +6,4 @@ flask==0.12.2
 flask-cors==3.0.3
 jinja2==2.9.6
 pip==9.0.1
+quandl
