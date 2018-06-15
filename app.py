@@ -53,7 +53,7 @@ def my_form_post():
     plot = create_stock_plot(ti)
     # Embed plot into HTML via Flask Render
     script, div = components(plot)
-    return render_template("graph.html", script=script, div=div)
+    return render_template("index2.html", script=script, div=div)
 
 #@app.route('/about')
 #def about():
