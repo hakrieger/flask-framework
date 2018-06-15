@@ -22,7 +22,7 @@ def create_stock_plot(ti):
     df = pd.DataFrame(data=dict(x=data.date, y=data.close, low=data.low, high=data.high)).sort_values(by="x")
     source = ColumnDataSource(df.reset_index())
 
-    t1 = "Closing Cost with High/Low Reach Band for Stock: '%s'" %(ti)
+    t1 = "Closing Cost with High/Low Reach Band"
     t2 = "From %s to %s" %('Jan 2018', 'Apr 2018')
     #figure configuration
     p = figure(title = t1, plot_width=500, plot_height=500, x_axis_type="datetime")
@@ -43,24 +43,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  return render_template('index1.html')
 
-@app.route('/', methods=['POST'])
-def my_form_post():
-    ti = request.form['stock-ticker']
-    #ti = text.upper()
-    # Create the plot
-    plot = create_stock_plot(ti)
-    # Embed plot into HTML via Flask Render
-    script, div = components(plot)
-    return render_template("graph2.html", script=script, div=div)
-
-@app.route('/graph')
+@app.route('/graph', methods=['POST'])
 def graph():
-    ti = 'AAPL'
+    text = request.form.get('stock-ticker')
+    ti = text.upper()
+
     plot = create_stock_plot(ti)
     script, div = components(plot)
-    return render_template('graph2.html', script=script, div=div)
+
+    if ti:
+        return render_template('graph3.html', stock_ticker=ti, script=script, div=div)
+    else:
+        return 'Please enter a valid stock ticker', 400
 
 if __name__ == '__main__':
-  app.run(port=33507)
+  app.run(debug = True) #port=33507
