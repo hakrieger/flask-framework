@@ -48,7 +48,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return render_template('index1.html')
+  return render_template('index.html')
 
 @app.route('/graph', methods=['POST'])
 def graph():
@@ -62,7 +62,7 @@ def graph():
     plot = create_stock_plot(ti)
     script, div = components(plot)
 
-    html = render_template('graph4.html', stock_ticker=ti, plot_script=script, plot_div=div,
+    html = render_template('graph.html', stock_ticker=ti, plot_script=script, plot_div=div,
         js_resources=js_resources, css_resources=css_resources)
 
     if ti:
