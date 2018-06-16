@@ -26,7 +26,7 @@ def create_stock_plot(ti):
     df = pd.DataFrame(data=dict(x=data.date, y=data.close, low=data.low, high=data.high)).sort_values(by="x")
     source = ColumnDataSource(df.reset_index())
 
-    t1 = "Closing Cost with High/Low Reach Band"
+    t1 = "Closing Cost with High/Low Reach Band for Stock: %s" %(ti)
     t2 = "From %s to %s" %('Jan 2018', 'Apr 2018')
     #creating figure
     p = figure(title = t1, plot_width=700, plot_height=500, x_axis_type="datetime")
