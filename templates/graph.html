@@ -8,6 +8,11 @@
     {{ plot_script|indent(4)|safe }}
   </head>
   <body>
+    <form action="graph" method = 'POST'>
+    <label for="username">Please enter a stock ticker: </label>
+    <input type="text" id = 'stock-ticker' name='stock-ticker' placeholder='AAPL'><br>
+    <input type="submit" value = 'Submit'>
+    
     <h2>Stock Ticker Graph:</h2>
     {{ plot_div|indent(4)|safe }}
 
@@ -16,7 +21,7 @@
     <form action="graph" method = 'POST'>
     <label for="username">Please enter a stock ticker: </label>
     <input type="text" id = 'stock-ticker' name='stock-ticker' placeholder='AAPL'><br>
-    <input type="submit" value = 'SEND'>
+    <input type="submit" value = 'Submit'>
 
   </body>
 </html>
