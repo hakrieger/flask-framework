@@ -15,7 +15,7 @@ q.ApiConfig.api_key = "WTAu2SBBZyADGzrpPL-c"
 def create_stock_plot(ti, d1, d2):
     #getting stock data from ticker input
     data = q.get_table('WIKI/PRICES', paginate=True,
-                   ticker = ti, date = { 'gte': d2, 'lte': d1' },
+                   ticker = ti, date = { 'gte': d2, 'lte': d1 },
                    qopts={"columns":["ticker", "date", "close", "low", "high"]})
     #creating dictionary database to plot
     df = pd.DataFrame(data=dict(x=data.date, y=data.close, low=data.low, high=data.high)).sort_values(by="x")
