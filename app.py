@@ -9,7 +9,7 @@ from bokeh.embed import components
 from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 #setting api key to access data from quandl
-q.ApiConfig.api_key = "WTAu2SBBZyADGzrpPL-c"
+q.ApiConfig.api_key = QUANDAL_API
 
 #Creating lists for inputs
 months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
