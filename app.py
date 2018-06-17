@@ -53,8 +53,8 @@ def graph():
     mon = request.form.get('mon')
     yr = request.form.get('yr')
     day = '01'
-    if mon == 01:
-        mon2 = 12
+    if mon == '01':
+        mon2 = '12'
         yr2 = yrs[yrs.index(yr)-1]
     else:
         mon2 = months[months.index(mon)-1] #making the selection the previous month
