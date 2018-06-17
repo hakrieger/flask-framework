@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect
 import quandl as q
 import pandas as pd
