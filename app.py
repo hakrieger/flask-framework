@@ -10,9 +10,8 @@ from bokeh.embed import components
 from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 
-from boto.s3.connection import S3Connection
-QUANDAL_API = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 #setting api key to access data from quandl
+QUANDAL_API = os.environ.get('QUANDAL_API')
 q.ApiConfig.api_key = QUANDAL_API
 
 #Creating lists for inputs
